@@ -27,6 +27,6 @@ protected:
 private:
 
 	void PrintTypes();
-
+	void PrintMessages();
 
 };

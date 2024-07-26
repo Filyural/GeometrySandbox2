@@ -26,23 +26,8 @@ void ABaseGeometryActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	FString Name = "John Connor";
-	UE_LOG(LogBaseGeometry, Display, TEXT("Name: %s"), *Name);
 
-	int WeaponsNum = 4;
-	float Health = 40.1444f;
-	bool IsDead = false;
-
-	FString WeaponNumStr = "Weapons number: " + FString::FromInt(WeaponsNum);
-	FString HealthStr = "Health = " + FString::SanitizeFloat(Health);
-	FString IsDeadStr = "Is Dead = " + FString(IsDead ? "True" : "False");
-
-	FString Stat = FString::Printf(TEXT("\n== All Stat ==\n %s\n %s\n %s"), *WeaponNumStr, *HealthStr, *IsDeadStr);
-	UE_LOG(LogBaseGeometry, Warning, TEXT("%s"), *Stat);
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, Name);
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, Stat, true, FVector2D(1.2f, 1.2f));
-
+	PrintMessages();
 	//PrintTypes();
 }
 
@@ -66,3 +51,23 @@ void ABaseGeometryActor::PrintTypes()
 	UE_LOG(LogTemp, Display, TEXT("Has weapon: %d"), static_cast<int>(HasWeapon));
 }
 
+void ABaseGeometryActor::PrintMessages()
+{
+	FString Name = "John Connor";
+
+	int WeaponsNum = 4;
+	float Health = 40.1444f;
+	bool IsDead = false;
+
+	FString WeaponNumStr = "Weapons number: " + FString::FromInt(WeaponsNum);
+	FString HealthStr = "Health = " + FString::SanitizeFloat(Health);
+	FString IsDeadStr = "Is Dead = " + FString(IsDead ? "True" : "False");
+
+	FString Stat = FString::Printf(TEXT("\n== All Stat ==\n %s\n %s\n %s"), *WeaponNumStr, *HealthStr, *IsDeadStr);
+
+	UE_LOG(LogBaseGeometry, Warning, TEXT("Name: %s"), *Name);
+	UE_LOG(LogBaseGeometry, Warning, TEXT("%s"), *Stat);
+
+	GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Black, Name);
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, Stat, true, FVector2D(1.2f, 1.2f));
+}
