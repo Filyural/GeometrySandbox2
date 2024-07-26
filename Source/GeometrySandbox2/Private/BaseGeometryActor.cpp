@@ -2,6 +2,7 @@
 
 
 #include "BaseGeometryActor.h"
+#include "Engine/Engine.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogBaseGeometry, All, All);
 
@@ -38,6 +39,9 @@ void ABaseGeometryActor::BeginPlay()
 
 	FString Stat = FString::Printf(TEXT("\n== All Stat ==\n %s\n %s\n %s"), *WeaponNumStr, *HealthStr, *IsDeadStr);
 	UE_LOG(LogBaseGeometry, Warning, TEXT("%s"), *Stat);
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, Name);
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, Stat, true, FVector2D(1.2f, 1.2f));
 
 	//PrintTypes();
 }
