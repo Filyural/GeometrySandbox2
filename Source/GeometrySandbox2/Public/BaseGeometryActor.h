@@ -22,6 +22,21 @@ public:
 
 protected:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	int32 WeaponsNum = 4;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Weapon")
+	bool HasWeapon = true;
+
+	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Health")
+	float Health = 40.1444f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
+	bool IsDead = false;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Stats")
+	int32 KillsNum = 12;
+
 	virtual void BeginPlay() override;
 
 private:
